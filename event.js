@@ -11,6 +11,14 @@ const eventHandler = (world) => {
     document.querySelector("#step").addEventListener("click", () => {
         eh.w.step()
     })
+    document.querySelector("#clear").addEventListener("click", () => {
+        eh.w.clear()
+        eh.w.display()
+    })
+    document.querySelector("#init").addEventListener("click", () => {
+        eh.w.init()
+        eh.w.display()
+    })
 
     document.querySelector("button.set-fps").addEventListener("click", () => {
         let input = document.querySelector("input.set-fps")

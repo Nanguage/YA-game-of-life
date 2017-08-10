@@ -108,5 +108,20 @@ const world = (canvas, width=100, height=100, fps=1) => {
         this.display()
     }
 
+    w.clear = function() {
+        /**
+         * clear status to an empty matrix
+         */
+        this.status = genMatrix(this.width, this.height,
+             (i, j) => {return 0})
+    }
+
+    w.init = function(initFunc=randInit) {
+        /**
+         * init status use a init function
+         */
+        this.status = genMatrix(this.width, this.height, randInit)
+    }
+
     return w
 }
