@@ -1,4 +1,9 @@
 const genMatrix = (width, height, initFunc=randInit) => {
+    /**
+     * generate matrix
+     * initFunc(i, j) : init function of cell in position (i, j),
+     *     default random init.
+     */
     let m = new Array()
     for (let i = 0; i < height; i++) {
         m[i] = new Array()
@@ -10,10 +15,17 @@ const genMatrix = (width, height, initFunc=randInit) => {
 }
 
 const randInit = (i, j) => {
+    /**
+     * init cell randomly, half chance alive, half chance dead
+     */
     return Math.floor(Math.random() * 2)
 }
 
 const around = (matrix, y, x, borderSize=1) => {
+    /**
+     * get the sub-matrix which is around the cell 'matrix[y][x]'
+     * borderSize: how many layers around the center, default 1
+     */
     let b = borderSize
     let size = b * 2 + 1
     let center = b + 1
@@ -31,6 +43,9 @@ const around = (matrix, y, x, borderSize=1) => {
 }
 
 const sum2D = (matrix) => {
+    /**
+     * get the sum value of 2D matrix.
+     */
     let sum = 0
     for (let i = 0; i < matrix.length; i++) {
         for (let j =  0; j < matrix[i].length; j++) {
@@ -41,6 +56,9 @@ const sum2D = (matrix) => {
 }
 
 const getCenter2D = (matrix) => {
+    /**
+     * get the center element of matrix
+     */
     h = matrix.length 
     w = matrix[0].length
     hc = Math.floor(h/2)
@@ -49,6 +67,10 @@ const getCenter2D = (matrix) => {
 }
 
 const printMatrix = (matrix) => {
+    /**
+     * print matrix in a easy to read format,
+     * for debug
+     */
     let str = ""
     for (let i = 0; i < matrix.length; i++) {
         for (let j =  0; j < matrix[i].length; j++) {
