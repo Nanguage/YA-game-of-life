@@ -12,10 +12,13 @@ const world = (canvas, width=100, height=100, fps=1) => {
         height: height,
         status: status,
         fps: fps,
-        stop: false,
+        stoped: false,
     }
 
     w.update = function() {
+        /**
+         * update the status according to the rule.
+         */
         let next = genMatrix(this.width, this.height, (i, j) => {return 0})
         for (let i = 0; i < this.height; i++) {
             for (let j = 0; j < this.width; j++) {
@@ -51,6 +54,9 @@ const world = (canvas, width=100, height=100, fps=1) => {
     }
 
     w.display = function(colors={ 0: 'white', 1: 'black', }) {
+        /**
+         * display the world's status in canvas
+         */
         let [w, h] = [this.canvas.width/this.width,
                       this.canvas.height/this.height]
         let ctx = this.context
@@ -65,12 +71,41 @@ const world = (canvas, width=100, height=100, fps=1) => {
     }
 
     w.run = function() {
-        setInterval(() => {
-            if (!this.stop){
-                this.update()
-                this.display()
-            }
-        }, 1000/this.fps)
+        /**
+         * runloop
+         */
+        if (!this.stoped) {
+            this.update()
+            this.display()
+            setTimeout(() => {
+                w.run()
+            }, 1000/this.fps)
+        } else {
+            return
+        }
+    }
+
+    w.pause = function() {
+        /**
+         * pause runloop
+         */
+        this.stoped = true
+    }
+
+    w.continue = function() {
+        /**
+         * revert to runloop
+         */
+        this.stoped = false
+        w.run()
+    }
+
+    w.step = function() {
+        /**
+         * update just one step
+         */
+        this.update()
+        this.display()
     }
 
     return w

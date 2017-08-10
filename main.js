@@ -44,6 +44,7 @@ const __test__ = () => {
 const __main__ = () => {
     canvas = document.getElementById('world')
     w = world(canvas, 200, 200)
+    eh = eventHandler(w)
     w.fps = 10
     w.run()
 }

@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title>game-of-life</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
+            h1#title {
+                text-align: center;
+            }
             canvas#world {
                 border: 1px solid black;
-            } 
+                margin: auto;
+                padding: 0;
+                display: block;
+            }
+            div.control {
+                padding-top: 10px;
+                text-align: center;
+            }
+            div.control .basic {
+                padding-bottom: 10px;
+            }
         </style>
 
         <script>
@@ -15,9 +28,25 @@
         </script>
         <script src="matrix.js"></script>
         <script src="world.js"></script>
+        <script src="event.js"></script>
     </head>
     <body>
-        <canvas id="world" width=600 height=600></canvas>
+        <div class="app">
+            <h1 id="title">Conway's Game of Life</h1>
+            <canvas id="world" width=800 height=800></canvas>
+            <div class="control">
+                <div class="basic">
+                    <button id="pause">pause</button>
+                    <button id="continue">continue</button>
+                    <button id="step">step</button>
+                </div>
+                <div class="fps">
+                    fps (default 10):
+                    <input class="set-fps" type="text">
+                    <button class="set-fps">OK</button>
+                </div>
+            </div>
+        </div>
     </body>
     <script src="main.js"></script>
 </html>
