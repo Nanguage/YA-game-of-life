@@ -25,5 +25,17 @@ const eventHandler = (world) => {
         let fps = Number(input.value)
         eh.w.fps = fps
     })
+
+    eh.w.canvas.addEventListener('mousedown', (event) => {
+        // change the cell status which has been clicked
+        let size = eh.w.canvas.width/eh.w.width
+        let y = event.offsetY
+        let x = event.offsetX
+        let i = Math.floor(y/size) 
+        let j = Math.floor(x/size) 
+        alive = eh.w.status[i][j]
+        eh.w.status[i][j] = alive ? 0 : 1
+        eh.w.display()
+    })
     return eh
 }

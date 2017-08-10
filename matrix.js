@@ -1,6 +1,6 @@
 const genMatrix = (width, height, initFunc=randInit) => {
     /**
-     * generate matrix
+     * generate matrix(2D Array)
      * initFunc(i, j) : init function of cell in position (i, j),
      *     default random init.
      */
